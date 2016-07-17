@@ -26,7 +26,7 @@ namespace OAuthService.Web
             var ops = new IdentityServerOptions
             {
                 SigningCertificate = new X509Certificate2(signingCertificate, signingCertificatePassword),
-                RequireSsl = false,
+                RequireSsl = false,//should be true on production serversss
                 Factory = factory
             };
 
