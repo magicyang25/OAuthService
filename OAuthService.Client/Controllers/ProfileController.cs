@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -9,16 +10,19 @@ namespace OAuthService.Client.Controllers
     {
         [HttpGet]
         [Authorize]
-        public async Task<IHttpActionResult> GetAsync(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var claimPrinciple = User as ClaimsPrincipal ;
+            var data = new { id = id, name = "name", guid = Guid.NewGuid() };
+            var claimPrinciple = User as ClaimsPrincipal;
             
-            return Ok(id);
+            return Ok(data);
         }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]string value)
         {
+            var data = new { value = value, name = "name", guid = Guid.NewGuid() };
+            return Ok(data);
         }
 
         // PUT api/<controller>/5

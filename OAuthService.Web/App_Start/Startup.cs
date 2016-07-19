@@ -21,7 +21,7 @@ namespace OAuthService.Web
             var factory = new IdentityServerServiceFactory()
                 .UseInMemoryUsers(InMemoryManager.GetUsers())
                 .UseInMemoryScopes(InMemoryManager.GetScopes())
-                .UseInMemoryClients(InMemoryManager.GetClient());
+                .UseInMemoryClients(InMemoryManager.GetClients());
 
             var ops = new IdentityServerOptions
             {

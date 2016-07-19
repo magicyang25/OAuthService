@@ -9,6 +9,64 @@ namespace OAuthService.Web
 {
     public static class InMemoryManager
     {
+
+        public static List<InMemoryUser> GetUsers()
+        {
+            return new List<InMemoryUser>
+            {
+                new InMemoryUser
+                {
+                    Subject = "mail@test.com",
+                    Username = "mail@test.com",
+                    Password = "password",
+                    Claims = new []
+                    {
+                        new Claim(Constants.ClaimTypes.Name, "Tester")
+                    }
+                }
+            };
+        }
+
+        public static IEnumerable<Scope> GetScopes()
+        {
+            return new[]
+            {
+                StandardScopes.OpenId,
+                StandardScopes.Profile,
+                StandardScopes.OfflineAccess,
+                new Scope
+                {
+                    Name = "read",
+                    DisplayName = "Read User Data"
+                }
+            };
+        }
+
+        public static IEnumerable<Client> GetClients()
+        {
+            return new[]
+            {
+                new Client
+                {
+                    ClientId = "socialnetwork",
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    ClientName = "SocialNetwork",
+                    Flow = Flows.ResourceOwner,
+                    AllowedScopes = new List<string>
+                    {
+                        Constants.StandardScopes.OpenId,
+                        "read"
+                    },
+                    Enabled = true
+                }
+            };
+        }
+
+        /*
+
         public static List<InMemoryUser> GetUsers()
         {
             return new List<InMemoryUser>
@@ -31,6 +89,7 @@ namespace OAuthService.Web
             return new[]
             {
                 StandardScopes.OpenId,
+                StandardScopes.Profile,
                 StandardScopes.OfflineAccess,
                 new Scope
                 {
@@ -61,6 +120,8 @@ namespace OAuthService.Web
                 }
             };
         }
+
+        */
 
     }
 }

@@ -30,7 +30,7 @@ namespace OAuthService.Client.App_Start
             //use IdentityServer3.AccessTokenValidation
             app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
             {
-                Authority = "http://localhost:22710"
+                Authority = "http://localhost:60375"
             });
 
             app.UseWebApi(config); //UseWebApi is from Microsoft.AspNet.WebApi.OwinSelfHost package
