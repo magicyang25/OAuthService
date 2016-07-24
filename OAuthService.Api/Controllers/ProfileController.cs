@@ -3,13 +3,14 @@ using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Thinktecture.IdentityModel.WebApi;
 
 namespace OAuthService.Client.Controllers
 {
     public class ProfileController : ApiController
     {
         [HttpGet]
-        [Authorize]
+        [ScopeAuthorize("read")]
         public async Task<IHttpActionResult> Get(int id)
         {
             var data = new { id = id, name = "name", guid = Guid.NewGuid() };
@@ -19,6 +20,8 @@ namespace OAuthService.Client.Controllers
         }
 
         // POST api/<controller>
+        [HttpPost]
+        [Authorize]
         public IHttpActionResult Post([FromBody]string value)
         {
             var data = new { value = value, name = "name", guid = Guid.NewGuid() };

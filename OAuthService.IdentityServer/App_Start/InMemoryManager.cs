@@ -61,6 +61,27 @@ namespace OAuthService.Web
                         "read"
                     },
                     Enabled = true
+                },
+                new Client
+                {
+                    ClientId = "socialnetwork_implicit",
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    ClientName = "SocialNetwork_implicit",
+                    Flow = Flows.Implicit,
+                    AllowedScopes = new List<string>
+                    {
+                        Constants.StandardScopes.OpenId,
+                        Constants.StandardScopes.Profile,
+                        "read"
+                    },
+                    RedirectUris = new List<string>
+                    {
+                        "http://localhost:53698/"
+                    },
+                    Enabled = true
                 }
             };
         }
