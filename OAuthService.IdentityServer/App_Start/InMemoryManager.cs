@@ -1,5 +1,4 @@
-﻿
-using IdentityServer3.Core;
+﻿using IdentityServer3.Core;
 using IdentityServer3.Core.Models;
 using IdentityServer3.Core.Services.InMemory;
 using System.Collections.Generic;
@@ -81,68 +80,13 @@ namespace OAuthService.Web
                     {
                         "http://localhost:53698/"
                     },
-                    Enabled = true
-                }
-            };
-        }
-
-        /*
-
-        public static List<InMemoryUser> GetUsers()
-        {
-            return new List<InMemoryUser>
-            {
-                new InMemoryUser
-                {
-                    Subject ="test@test.com",
-                    Username = "test@test.com",
-                    Password = "password",
-                    Claims = new []
+                    PostLogoutRedirectUris = new List<string>
                     {
-                        new Claim(Constants.ClaimTypes.Name, "Tester")
-                    }
-                }
-            };
-        }
-
-        public static IEnumerable<Scope> GetScopes()
-        {
-            return new[]
-            {
-                StandardScopes.OpenId,
-                StandardScopes.Profile,
-                StandardScopes.OfflineAccess,
-                new Scope
-                {
-                    Name = "read",
-                    DisplayName ="Read user data"
-                }
-            };
-        }
-
-        public static IEnumerable<Client> GetClient()
-        {
-            return new[]
-            {
-                new Client
-                {
-                    ClientId = "socialnetwork",
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("secret".Sha256())
-                    },
-                    Flow = Flows.ResourceOwner,
-                    AllowedScopes = new List<string>
-                    {
-                        Constants.StandardScopes.OpenId,
-                        "read"
+                        "http://localhost:53698/"
                     },
                     Enabled = true
                 }
             };
         }
-
-        */
-
     }
 }
