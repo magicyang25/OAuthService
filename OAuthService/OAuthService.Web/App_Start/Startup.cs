@@ -27,6 +27,12 @@ namespace OAuthService.Web
             var signingCertificateFileName = ConfigurationManager.AppSettings["SigningCertificateFileName"];
             var signingCertificatePassword = ConfigurationManager.AppSettings["SigningCertificatePassword"];
 
+            var entityFrameworkOptions = new IdentityServer3.EntityFramework.EntityFrameworkServiceOptions
+            {
+                ConnectionString = ConfigurationManager.ConnectionStrings["OAuthService.IdentityServer"].ConnectionString
+            };
+
+            var factory = new IdentityServerServiceFactory().
 
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
 
